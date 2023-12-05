@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -17,5 +19,17 @@ public class CategoryController {
         List<Category> listCategories = repository.findAll();
         model.addAttribute("listCategories", listCategories);
         return "categories";
+    }
+
+    @GetMapping("/categories/new")
+    public String showNewCategoryForm(Model model) {
+        model.addAttribute("category", new Category());
+        return "category_form";
+    }
+
+    @PostMapping("/categories/save")
+    public String saveCategory(Category category) {
+        repository.save(category);
+        return "redirect:/categories";
     }
 }
