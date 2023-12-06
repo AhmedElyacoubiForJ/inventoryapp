@@ -27,6 +27,13 @@ public class ProductController {
     @PostMapping("/products/save")
     public String saveProduct(Product product) {
         productRepository.save(product);
-        return "redirect:/";
+        return "redirect:/products";
+    }
+
+    @GetMapping("/products")
+    public String listProducts(Model model) {
+        List<Product> products = productRepository.findAll();
+        model.addAttribute("listProducts", products);
+        return "products";
     }
 }
