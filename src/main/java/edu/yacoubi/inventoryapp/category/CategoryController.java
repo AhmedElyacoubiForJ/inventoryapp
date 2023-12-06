@@ -16,8 +16,8 @@ public class CategoryController {
 
     @GetMapping("/categories")
     public String listCategories(Model model) {
-        List<Category> listCategories = repository.findAll();
-        model.addAttribute("listCategories", listCategories);
+        List<Category> categories = repository.findAll();
+        model.addAttribute("listCategories", categories);
         return "categories";
     }
 
