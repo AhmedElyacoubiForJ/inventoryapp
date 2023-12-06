@@ -19,10 +19,8 @@ public class ProductController {
     @GetMapping("/products/new")
     public String showNewProductForm(Model model) {
         List<Category> categories = categoryRepository.findAll();
-
         model.addAttribute("listCategories", categories);
         model.addAttribute("product", new Product());
-
         return "product_form";
     }
 
