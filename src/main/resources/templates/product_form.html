@@ -9,12 +9,16 @@
 </head>
 <body>
     <div class="container text-center">
-        <div><h1>Create New Product</h1></div>
+        <!-- Create or Edit -->
+        <div th:if="${product.id == null}"><h1>Create New Product</h1></div>
+        <div th:unless="${product.id == null}"><h1>Update Product</h1></div>
         <!-- -->
         <form th:action="@{/products/save}"
               th:object="${product}"
               method="post"
               style="max-with: 600px; margin: 0 auto;">
+            <!-- Edit given Product w. ID -->
+            <input type="hidden" th:field="*{id}" th:value="${product.id}"/>
             <div class="m-3">
                 <!-- -->
                 <div class="form-group row">
