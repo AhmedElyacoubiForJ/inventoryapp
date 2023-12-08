@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class BrandController {
     @PostMapping("/brands/save")
     public String saveBrand(Brand brand) {
         brandRepository.save(brand);
-        return "redirect:/"; //"redirect:/brands";
+        return "redirect:/brands";
     }
 
     @GetMapping("/brands")
@@ -37,5 +38,15 @@ public class BrandController {
         List<Brand> brands = brandRepository.findAll();
         model.addAttribute("listBrands", brands);
         return "brands";
+    }
+
+    @GetMapping("/brands/edit/{id}")
+    public String showEditBrandForm(@PathVariable("id") Integer id, Model model) {
+        Brand brand = brandRepository.findById(id).get();
+        List<Category> categories = categoryRepository.findAll();
+
+        model.addAttribute("brand", brand);
+        model.addAttribute("listCategories", categories);
+        return "brand_form";
     }
 }
