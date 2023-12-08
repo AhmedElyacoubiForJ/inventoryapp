@@ -2,12 +2,13 @@ package edu.yacoubi.inventoryapp.category;
 
 import edu.yacoubi.inventoryapp.brand.Brand;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor
+//@Data
+@Getter
+@Setter
+@AllArgsConstructor @NoArgsConstructor
 public class Category {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,5 +27,10 @@ public class Category {
     public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
