@@ -3,13 +3,16 @@
 
 ### Plan is to implement CRUD operations on One-To-Many relationships in 3 cases:
 * Many-To-One side with existing parent.
-    > To do is to create children objects, i.e. products for the existing parent category.
+    > To do is to create children objects,
+    > i.e. products for the existing parent category.
 
 * One-To-Many side with existing children.
-    > To do is to create new parent with some existing children, Brand and categories
+    > To do is to create new parent with some existing children,
+    > i.e. new brand for existing categories.
 
 * One-To-Many side with new children.
-    > i.e. creating new parent with new children, Product and details.
+    > To do is to create new parent with new children,
+    > i.e. new product for new details.
 
 
 ### Data model Design, the One side is Parent & Many side is child.

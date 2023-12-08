@@ -1,15 +1,18 @@
-package edu.yacoubi.inventoryapp.category;
+package edu.yacoubi.inventoryapp.brand;
 
-import edu.yacoubi.inventoryapp.brand.Brand;
+import edu.yacoubi.inventoryapp.category.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
-public class Category {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Brand {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(
@@ -19,12 +22,7 @@ public class Category {
     )
     private String name;
 
-    @ManyToOne
+    @OneToMany // (mappedBy = "brand", cascade = CascadeType.PERSIST)
     @JoinColumn(name = "brand_id")
-    private Brand brand;
-
-    public Category(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private List<Category> categories = new ArrayList<>();
 }

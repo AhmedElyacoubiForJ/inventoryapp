@@ -11,7 +11,7 @@
     <div class="container text-center">
         <div class="h1">Product List</div>
         <div>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
@@ -29,9 +29,9 @@
                             <td>[[${product.price}]]</td>
                             <td>[[${product.category.name}]]</td>
                             <td>
-                                <a th:href="@{'/products/edit/' + ${product.id}}">Edit</a>
+                                <a th:href="@{'/products/edit/' + ${product.id}}" class="btn btn-primary">Edit</a>
                                 &nbsp;
-                                <a th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
+                                <a th:href="@{'/products/delete/' + ${product.id}}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     </th:block>
