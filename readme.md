@@ -10,7 +10,7 @@
     > To do is to create new parent with some existing children,
     > i.e. new brand for existing categories.
 
-* One-To-Many side with new children.
+* One-To-Many side with new children. (1:48:14 / 2:15:27)
     > To do is to create new parent with new children,
     > i.e. new product for new details.
 

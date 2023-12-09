@@ -2,6 +2,7 @@ package edu.yacoubi.inventoryapp.product;
 
 import edu.yacoubi.inventoryapp.category.Category;
 import edu.yacoubi.inventoryapp.category.CategoryRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +27,12 @@ public class ProductController {
     }
 
     @PostMapping("/products/save")
-    public String saveProduct(Product product) {
+    public String saveProduct(Product product, HttpServletRequest request) {
+        String[] detailNames = request.getParameterValues("detailName");
+        String[] detailValues = request.getParameterValues("detailValue");
+        for (int i=0; i<detailNames.length; i++) {
+            product.addDetails(detailNames[i], detailValues[i]);
+        }
         productRepository.save(product);
         return "redirect:/products";
     }
