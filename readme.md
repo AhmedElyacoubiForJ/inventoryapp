@@ -1,4 +1,4 @@
-## Inventory Spring Boot application, Frontend w. Thymeleaf and Backend Spring Data JPA
+## Inventory Spring Boot application, FE. Thymeleaf and BE. Spring Data JPA
 ### Version 0.1
 
 ### Plan is to implement CRUD operations on One-To-Many relationships in 3 cases:
@@ -10,7 +10,7 @@
     > To do is to create new parent with some existing children,
     > i.e. new brand for existing categories.
 
-* One-To-Many side with new children. (1:48:14 / 2:15:27)
+* One-To-Many side with new children.
     > To do is to create new parent with new children,
     > i.e. new product for new details.
 

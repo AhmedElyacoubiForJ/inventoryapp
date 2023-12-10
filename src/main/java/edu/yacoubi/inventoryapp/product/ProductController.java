@@ -30,8 +30,20 @@ public class ProductController {
     public String saveProduct(Product product, HttpServletRequest request) {
         String[] detailNames = request.getParameterValues("detailName");
         String[] detailValues = request.getParameterValues("detailValue");
+        String[] detailIDs = request.getParameterValues("detailID");
+
         for (int i=0; i<detailNames.length; i++) {
-            product.addDetails(detailNames[i], detailValues[i]);
+            if (detailIDs != null && detailIDs.length > 0) {
+                // edit product mode
+                product.setDetail(
+                        Integer.valueOf(detailIDs[i]),
+                        detailNames[i],
+                        detailValues[i]
+                );
+            } else {
+                // new product mode
+                product.addDetails(detailNames[i], detailValues[i]);
+            }
         }
         productRepository.save(product);
         return "redirect:/products";
