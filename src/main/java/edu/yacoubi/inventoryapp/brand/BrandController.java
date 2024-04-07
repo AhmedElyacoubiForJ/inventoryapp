@@ -2,7 +2,6 @@ package edu.yacoubi.inventoryapp.brand;
 
 import edu.yacoubi.inventoryapp.category.Category;
 import edu.yacoubi.inventoryapp.category.CategoryRepository;
-import edu.yacoubi.inventoryapp.product.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,7 @@ public class BrandController {
 
         model.addAttribute("listCategories", categories);
         model.addAttribute("brand", new Brand());
-        return "brand_form";
+        return "brand/form";
     }
 
     @PostMapping("/brands/save")
@@ -37,7 +36,7 @@ public class BrandController {
     public String listBrands(Model model) {
         List<Brand> brands = brandRepository.findAll();
         model.addAttribute("listBrands", brands);
-        return "brands";
+        return "brand/list";
     }
 
     @GetMapping("/brands/edit/{id}")
@@ -47,6 +46,6 @@ public class BrandController {
 
         model.addAttribute("brand", brand);
         model.addAttribute("listCategories", categories);
-        return "brand_form";
+        return "brand/form";
     }
 }

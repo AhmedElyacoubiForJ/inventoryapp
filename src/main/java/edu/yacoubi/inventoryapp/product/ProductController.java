@@ -23,7 +23,7 @@ public class ProductController {
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute("listCategories", categories);
         model.addAttribute("product", new Product());
-        return "product_form";
+        return "product/form";
     }
 
     @PostMapping("/products/save")
@@ -53,7 +53,7 @@ public class ProductController {
     public String listProducts(Model model) {
         List<Product> products = productRepository.findAll();
         model.addAttribute("listProducts", products);
-        return "products";
+        return "product/list";
     }
 
     @GetMapping("/products/edit/{id}")
@@ -62,7 +62,7 @@ public class ProductController {
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute("product", product);
         model.addAttribute("listCategories", categories);
-        return "product_form";
+        return "product/form";
     }
 
     @GetMapping("/products/delete/{id}")
